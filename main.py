@@ -1,14 +1,5 @@
 """
-Simple Bot to reply to Telegram messages.
-
-First, a few handler functions are defined. Then, those functions are passed to
-the Dispatcher and registered at their respective places.
-Then, the bot is started and runs until we press Ctrl-C on the command line.
-
-Usage:
-Basic Echobot example, repeats messages.
-Press Ctrl-C on the command line or send a signal to the process to stop the
-bot.
+    Bot for scheduling tasks
 """
 
 import logging
@@ -38,16 +29,7 @@ def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
 
-def error(bot, update):
-    """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', bot, update.error)
-
-
 def main():
-    """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
     updater = Updater("1057232664:AAF07449Q9608YFV89kg-mTmRU8iiE1SoS0")
 
     # Get the dispatcher to register handlers
@@ -59,9 +41,6 @@ def main():
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
-
-    # log all errors
-    dp.add_error_handler(error)
 
     # Start the Bot
     updater.start_polling()
