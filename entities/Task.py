@@ -6,16 +6,16 @@ class Task:
     assigned = list()
     state = States.TaskStates.TODO
     name = str()
-    id = None
+    id = int()
     create_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     deadline = None
     points = int()
     description = str()
 
-    def __init__(self, name, deadline, tasks_len):
+    def __init__(self, name, deadline, description):
         self.name = name
-        self.id = tasks_len + 1
         self.deadline = deadline
+        self.description = description
 
     def add_assigned(self, names):
         self.assigned.append(names)
@@ -28,3 +28,6 @@ class Task:
 
     def abort_task(self):
         self.state = States.TaskStates.ABORTED
+
+    def save_task(self, tasks_len):
+        self.id = tasks_len + 1
