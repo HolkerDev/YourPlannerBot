@@ -11,6 +11,9 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Paste API Token here
+API_TOKEN = "Paste token here"
+
 
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
@@ -30,7 +33,7 @@ def echo(bot, update):
 
 
 def main():
-    updater = Updater("1057232664:AAF07449Q9608YFV89kg-mTmRU8iiE1SoS0")
+    updater = Updater(API_TOKEN)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
